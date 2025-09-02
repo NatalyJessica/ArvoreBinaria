@@ -161,26 +161,21 @@ public class ArvoreBinariaDeBusca<X extends Comparable<X>> {
 
             int comparacao = i.compareTo(atual.getInfo());
             No pai = null;
-            No fEsq = null;
-            No fDir = null;
-
+        
             if (comparacao == 0) {
-                if (atual.getDir() == null && atual.getEsq() == null) {
-                    this.raiz = null;
-                    System.out.println("excluiu");
-                    return;
-                } else
-                    System.out.println("raiz tem filhos ");
-                fEsq = atual.getEsq();
-                fDir = atual.getDir();
-                if (fEsq.getInfo() != null && fDir.getInfo() != null) {
-                    this.raiz = fDir;
-                    return; 
-                }
-
+                break;
             }
 
-            return;
+            pai = atual;
+            //caso folha sem filho
+            if(comparacao == 0){
+                if(atual.getDir() == null && atual.getEsq() == null )
+                    this.raiz = null;                
+              return;      
+                
+            }
+
+     
 
         }
     }
