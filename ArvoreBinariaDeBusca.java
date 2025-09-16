@@ -275,7 +275,7 @@ public class ArvoreBinariaDeBusca<X extends Comparable<X>> {
 
     //isBalanceada (arvore para verificar se a esquerda e direta da arvore tem a mesma altura (0)
     // ou com diferença de (1) caso for return true e caso for a diferença amir que 1 return false
-    //sem recusão
+    //sem recusão(eu fiizz)
     public boolean isBalanceada(){
         if(this.raiz == null ) return true;
 
@@ -296,8 +296,12 @@ public class ArvoreBinariaDeBusca<X extends Comparable<X>> {
         return false;    
     }
 
+    /* correção com recusão */
+
+    
+
     public void balanceieSe(){
-        
+
     } 
 
 
