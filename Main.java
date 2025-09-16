@@ -9,10 +9,12 @@ public class Main {
             a.guardeUmItem(60);
             a.guardeUmItem(42);
             a.guardeUmItem(49);
-            //a.guardeUmItem(55);
-            //a.guardeUmItem(63);
+            a.guardeUmItem(55);
+            a.guardeUmItem(63);
             a.guardeUmItem(30);
-            //a.guardeUmItem(65);
+            a.guardeUmItem(65);
+            //a.guardeUmItem(61);
+            //a.guardeUmItem(64);
 
             //int tamanho = a.getAltura();
             //System.out.println(tamanho);

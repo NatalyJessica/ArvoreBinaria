@@ -274,12 +274,16 @@ public class ArvoreBinariaDeBusca<X extends Comparable<X>> {
     //isBalanceada (arvore para verificar se a esquerda e direta da arvore tem a mesma altura (0)
     // ou com diferença de (1) caso for return true e caso for a diferença amir que 1 return false
     public boolean isBalanceada(){
-        if(this.raiz == null) return true;
+        if(this.raiz == null ) return true;
 
         No no = this.raiz;
 
-        int qtdSubArvoreEsq = getQtdDeNodos(no.getEsq()) - 1;
-        int qtdSubArvoreDir = getQtdDeNodos(no.getDir()) - 1;
+        int qtdSubArvoreEsq = getQtdDeNodos(no.getEsq());
+        int qtdSubArvoreDir = getQtdDeNodos(no.getDir());
+        System.out.println(qtdSubArvoreEsq);
+        System.out.println(qtdSubArvoreDir);
+        int valor = qtdSubArvoreDir - qtdSubArvoreEsq;
+        System.out.println(valor);
 
         if(qtdSubArvoreDir - qtdSubArvoreEsq == 0 )
             return true;
@@ -288,6 +292,8 @@ public class ArvoreBinariaDeBusca<X extends Comparable<X>> {
         
         return false;    
     }
+
+
 
 
     // fazer metodos obrigatorios da arvore
