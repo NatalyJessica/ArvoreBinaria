@@ -4,19 +4,25 @@ public class Main {
             ArvoreBinariaDeBusca<Integer> a =
 			new ArvoreBinariaDeBusca<Integer> ();
 
-            a.guardeUmItem(10);
-            a.guardeUmItem(15);
-            a.guardeUmItem(20);
-            //a.guardeUmItem(3);
-            //a.guardeUmItem(6);
-            //a.guardeUmItem(9);
-            int tamanho = a.getAltura();
-            System.out.println(tamanho);
+            a.guardeUmItem(50);
+            a.guardeUmItem(45);
+            a.guardeUmItem(60);
+            a.guardeUmItem(42);
+            a.guardeUmItem(49);
+            //a.guardeUmItem(55);
+            //a.guardeUmItem(63);
+            a.guardeUmItem(30);
+            //a.guardeUmItem(65);
+
+            //int tamanho = a.getAltura();
+            //System.out.println(tamanho);
             
             
-           a.removaUmItem(20);
-           a.removaUmItem(10); 
-           
+           //a.removaUmItem(20);
+           //a.removaUmItem(10); 
+           boolean balanceada = a.isBalanceada();
+           System.out.println(balanceada);
+
         }
 
         catch (Exception erro){
