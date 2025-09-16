@@ -13,17 +13,18 @@ public class Main {
             a.guardeUmItem(63);
             a.guardeUmItem(30);
             a.guardeUmItem(65);
-            //a.guardeUmItem(61);
-            //a.guardeUmItem(64);
+            a.guardeUmItem(61);
+            a.guardeUmItem(64);
 
             //int tamanho = a.getAltura();
             //System.out.println(tamanho);
             
+            System.out.println(a.getQtdDeNodos());
             
            //a.removaUmItem(20);
            //a.removaUmItem(10); 
-           boolean balanceada = a.isBalanceada();
-           System.out.println(balanceada);
+           //boolean balanceada = a.isBalanceada();
+           //System.out.println(balanceada);
 
         }
 

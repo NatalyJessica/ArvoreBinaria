@@ -268,11 +268,14 @@ public class ArvoreBinariaDeBusca<X extends Comparable<X>> {
             return 0;
         return 1 + getQtdDeNodos(r.getEsq()) + getQtdDeNodos(r.getDir());
     }
+
+
     // exercicios isEspelho() faça um metodo para retornar true ou false caso uma
     // arvore seja o espelho da outra
 
     //isBalanceada (arvore para verificar se a esquerda e direta da arvore tem a mesma altura (0)
     // ou com diferença de (1) caso for return true e caso for a diferença amir que 1 return false
+    //sem recusão
     public boolean isBalanceada(){
         if(this.raiz == null ) return true;
 
@@ -292,6 +295,10 @@ public class ArvoreBinariaDeBusca<X extends Comparable<X>> {
         
         return false;    
     }
+
+    public void balanceieSe(){
+        
+    } 
 
 
 
