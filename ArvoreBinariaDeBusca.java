@@ -143,46 +143,134 @@ public class ArvoreBinariaDeBusca<X extends Comparable<X>> {
         return this.getAltura(this.raiz);
     }
 
-    // metodo remover
-    // verificar se o item removido foi passado
-    // verificar se a raiz não é nula
-    // verificar se o item existe
-    public void removeItem(X i) throws Exception {
-        System.out.println("iniciou");
+
+    public void removaUmItem(X i) throws Exception {
         if (i == null)
-            throw new Exception("informação ausente");
+            throw new Exception("Informacao ausente");
+
         if (this.raiz == null)
-            throw new Exception("Arvore vazia ");
-        if (!temOItem(i))
-            throw new Exception("Informação a ser removida não existe");
+            throw new Exception("Arvore vazia");
 
         No atual = this.raiz;
-        for (;;) {
+        No pai = null;
+        boolean filhoEsquerdo = true;
 
+        for (;;) {
             int comparacao = i.compareTo(atual.getInfo());
-            No pai = null;
-        
-            if (comparacao == 0) {
+            if (comparacao == 0)
                 break;
-            }
 
             pai = atual;
-            //caso folha sem filho
-            if(comparacao == 0){
-                if(atual.getDir() == null && atual.getEsq() == null )
-                    this.raiz = null;                
-              return;      
-                
+            if (comparacao < 0) {
+                atual = atual.getEsq();
+                filhoEsquerdo = true;
+            } else {
+                atual = atual.getDir();
+                filhoEsquerdo = false;
             }
 
-     
+            if (atual == null)
+                throw new Exception("Remocao de algo inexistente");
+        }
 
+        // se a info for encontrada numa folha, deslique a folha da árvore,
+        // fazendo o ponteiro que aponta para ela dentro do seu nó pai,
+        // tornar-se null
+        if (atual.getEsq() == null && atual.getDir() == null) {
+            if (atual == this.raiz)
+                this.raiz = null;
+            else if (filhoEsquerdo)
+                pai.setEsq(null);
+            else
+                pai.setDir(null);
+        }
+        // se info for encontrada num nó N, que não é folha, sendo que N
+        // só tem filho à esquerda, e sendo N filho esquerdo de um certo
+        // pai P, faça o ponteiro esquerdo de P, passar a apontar para
+        // esse filho que ha na esquerda de N
+        else if (atual.getDir() == null && filhoEsquerdo) {
+            if (atual == this.raiz)
+                this.raiz = atual.getEsq();
+            else
+                pai.setEsq(atual.getEsq());
+        }
+        // se info for encontrada num nó N, que não é folha, sendo que N
+        // só tem filho à esquerda, e sendo N filho direito de um certo
+        // pai P, faça o ponteiro direito de P, passar a apontar para
+        // esse filho que ha na esquerda de N
+        else if (atual.getDir() == null && !filhoEsquerdo) {
+            if (atual == this.raiz)
+                this.raiz = atual.getEsq();
+            else
+                pai.setDir(atual.getEsq());
+        }
+        // se info for encontrada num nó N, que não é folha, sendo que N
+        // só tem filho à direita, e sendo N filho esquerdo de um certo
+        // pai P, faça o ponteiro esquerdo de P, passar a apontar para
+        // esse filho que ha na direita de N
+        else if (atual.getEsq() == null && filhoEsquerdo) {
+            if (atual == this.raiz)
+                this.raiz = atual.getDir();
+            else
+                pai.setEsq(atual.getDir());
+        }
+        // se info for encontrada num nó N, que não é folha, sendo que N
+        // só tem filho à direita, e sendo N filho direita de um certo
+        // pai P, faça o ponteiro direito de P, passar a apontar para
+        // esse filho que ha na direita de N
+        else if (atual.getEsq() == null && !filhoEsquerdo) {
+            if (atual == this.raiz)
+                this.raiz = atual.getDir();
+            else
+                pai.setDir(atual.getDir());
+        }
+        // se info for encontrada num nó N, que não é folha e tem 2 filhos,
+        // encontre a informação info que existe à extrema esquerda da
+        // subarvore direita de N ou à extrema direita da subarvore esquerda
+        // de N; remova o nó que contém info e substitua dentro do nó N,
+        // a informação que ali se encontra por info
+        else {
+            No sucessor = null;
+            pai = atual;
+            if (getQtdDeNodos(atual.getEsq()) > getQtdDeNodos(atual.getDir())) {
+                sucessor = atual.getEsq();
+                filhoEsquerdo = true;
+                while (sucessor.getDir() != null) {
+                    pai = sucessor;
+                    sucessor = sucessor.getDir();
+                    filhoEsquerdo = false;
+                }
+            } else {
+                sucessor = atual.getDir();
+                filhoEsquerdo = false;
+                while (sucessor.getEsq() != null) {
+                    pai = sucessor;
+                    sucessor = sucessor.getEsq();
+                    filhoEsquerdo = true;
+                }
+            }
+            if (filhoEsquerdo) {
+                pai.setEsq(sucessor.getDir());
+            } else {
+                pai.setDir(sucessor.getEsq());
+            }
+
+            atual.setInfo(sucessor.getInfo());
         }
     }
 
-    //exercicios isEspelho() faça um metodo para retornar true ou false caso uma arvore seja o espelho da outra
-    //fazer metodos obrigatorios da arvore
+    public int getQtdDeNodos() {
+        return getQtdDeNodos(this.raiz);
+    }
 
+    private int getQtdDeNodos(No r) {
+        if (r == null)
+            return 0;
+        return 1 + getQtdDeNodos(r.getEsq()) + getQtdDeNodos(r.getDir());
+    }
+    // exercicios isEspelho() faça um metodo para retornar true ou false caso uma
+    // arvore seja o espelho da outra
     
+    // fazer metodos obrigatorios da arvore
 
 } // fim da classe ArvoreBinariaDeBusca

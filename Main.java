@@ -14,8 +14,9 @@ public class Main {
             System.out.println(tamanho);
             
             
-           //a.removeItem(10);
-           //a.removeItem(11); 
+           a.removaUmItem(20);
+           a.removaUmItem(10); 
+           
         }
 
         catch (Exception erro){
